@@ -23,6 +23,12 @@ form {
   --color-primary-hover: #992b1e;
   --color-focus: #245ab4;
   --color-danger: #a52b25;
+  --priority-high: #b73526;
+  --priority-high-bg: #fbece8;
+  --priority-medium: #9a5b00;
+  --priority-medium-bg: #fdf3e1;
+  --priority-low: #4a6a8a;
+  --priority-low-bg: #edf2f7;
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -129,10 +135,18 @@ h1 {
   border-bottom: 1px solid var(--color-border);
 }
 
-.task-title {
+.task-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   align-self: center;
+  gap: 0.25rem 0.6rem;
   min-width: 0;
   padding: 0.65rem 0;
+}
+
+.task-title {
+  min-width: 0;
   overflow-wrap: anywhere;
   line-height: 1.55;
 }
@@ -379,6 +393,148 @@ input:focus-visible {
   border-top: 1px solid var(--color-border);
 }
 
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.priority-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.priority-badge.priority-high {
+  color: var(--priority-high);
+  background: var(--priority-high-bg);
+}
+
+.priority-badge.priority-medium {
+  color: var(--priority-medium);
+  background: var(--priority-medium-bg);
+}
+
+.priority-badge.priority-low {
+  color: var(--priority-low);
+  background: var(--priority-low-bg);
+}
+
+.task-completed .priority-badge {
+  color: var(--color-muted);
+  background: #f2f2ee;
+}
+
+.priority-picker {
+  min-width: 0;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.new-task .priority-picker {
+  margin-left: calc(44px + 0.6rem);
+}
+
+.priority-legend {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.edit-task .priority-legend {
+  color: var(--color-text);
+  font-size: 0.85rem;
+}
+
+.priority-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.priority-option,
+.edit-task .priority-option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-muted);
+  background: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.priority-option:hover {
+  border-color: #c9c9c2;
+  color: var(--color-text);
+}
+
+.priority-option input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.priority-option.priority-high .priority-dot {
+  background: var(--priority-high);
+}
+
+.priority-option.priority-medium .priority-dot {
+  background: var(--priority-medium);
+}
+
+.priority-option.priority-low .priority-dot {
+  background: var(--priority-low);
+}
+
+.priority-option.priority-high:has(input:checked) {
+  color: var(--priority-high);
+  background: var(--priority-high-bg);
+  border-color: var(--priority-high);
+}
+
+.priority-option.priority-medium:has(input:checked) {
+  color: var(--priority-medium);
+  background: var(--priority-medium-bg);
+  border-color: var(--priority-medium);
+}
+
+.priority-option.priority-low:has(input:checked) {
+  color: var(--priority-low);
+  background: var(--priority-low-bg);
+  border-color: var(--priority-low);
+}
+
+.priority-option:has(input:focus-visible) {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
 .sr-only,
 .task-status {
   position: absolute;
@@ -453,6 +609,10 @@ input:focus-visible {
   .add-mark {
     width: 36px;
   }
+
+  .new-task .priority-picker {
+    margin-left: calc(36px + 0.4rem);
+  }
 }
 
 @media (max-width: 380px) {
@@ -470,6 +630,12 @@ input:focus-visible {
 
   .new-task-row .button {
     margin-left: auto;
+  }
+
+  .priority-option {
+    flex: 1;
+    justify-content: center;
+    padding: 0 0.6rem;
   }
 }
 

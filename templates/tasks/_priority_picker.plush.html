@@ -1,0 +1,17 @@
+<fieldset class="priority-picker"<%= if (len(errors.Get("priority")) > 0) { %> aria-describedby="priority-error"<% } %>>
+  <legend class="priority-legend">Prioridad</legend>
+  <div class="priority-options">
+    <%= for (option) in priorities { %>
+      <label class="priority-option priority-<%= option.Value %>">
+        <input type="radio" name="priority" value="<%= option.Value %>"<%= if (task.Priority == option.Value) { %> checked<% } %>>
+        <span class="priority-dot" aria-hidden="true"></span>
+        <%= option.Label %>
+      </label>
+    <% } %>
+  </div>
+  <%= if (len(errors.Get("priority")) > 0) { %>
+    <p id="priority-error" class="field-error" role="alert">
+      <%= for (msg) in errors.Get("priority") { %><%= msg %><% } %>
+    </p>
+  <% } %>
+</fieldset>

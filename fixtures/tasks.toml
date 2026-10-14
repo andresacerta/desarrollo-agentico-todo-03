@@ -24,3 +24,41 @@ name = "tres tareas"
       completed = true
       created_at = "<%= now() %>"
       updated_at = "<%= now() %>"
+
+[[scenario]]
+name = "prioridades mezcladas"
+
+  [[scenario.table]]
+    name = "tasks"
+
+    [[scenario.table.row]]
+      id = "<%= uuid() %>"
+      title = "Baja más antigua"
+      completed = false
+      priority = "low"
+      created_at = "2026-09-01 09:00:00"
+      updated_at = "2026-09-01 09:00:00"
+
+    [[scenario.table.row]]
+      id = "<%= uuid() %>"
+      title = "Alta primera"
+      completed = false
+      priority = "high"
+      created_at = "2026-09-01 09:01:00"
+      updated_at = "2026-09-01 09:01:00"
+
+    [[scenario.table.row]]
+      id = "<%= uuid() %>"
+      title = "Media intermedia"
+      completed = false
+      priority = "medium"
+      created_at = "2026-09-01 09:02:00"
+      updated_at = "2026-09-01 09:02:00"
+
+    [[scenario.table.row]]
+      id = "<%= uuid() %>"
+      title = "Alta segunda"
+      completed = false
+      priority = "high"
+      created_at = "2026-09-01 09:03:00"
+      updated_at = "2026-09-01 09:03:00"
