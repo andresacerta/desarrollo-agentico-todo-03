@@ -19,8 +19,10 @@ form {
   --color-muted: #686864;
   --color-border: #e9e9e5;
   --color-sidebar: #f7f7f5;
-  --color-primary: #b73526;
-  --color-primary-hover: #992b1e;
+  --color-primary: #2f2f2d;
+  --color-primary-hover: #1c1c1b;
+  --color-primary-soft: #ededea;
+  --color-primary-soft-hover: #e2e2de;
   --color-focus: #245ab4;
   --color-danger: #a52b25;
   --priority-high: #b73526;
@@ -80,15 +82,15 @@ body {
   min-height: 44px;
   padding: 0.55rem 0.7rem;
   border-radius: 6px;
-  background: #f7e9e4;
-  color: #a03123;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
 }
 
 .nav-link:hover {
-  background: #f2ded6;
+  background: var(--color-primary-soft-hover);
 }
 
 .nav-link svg {
@@ -188,7 +190,7 @@ h1 {
 }
 
 .task-toggle-button:hover .completion-icon {
-  background: #f7e9e4;
+  background: var(--color-primary-soft);
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
