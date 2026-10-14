@@ -28,6 +28,6 @@ El plan debe incluir:
 - `## Tests y validación`
 - `## Riesgos y recuperación`
 
-Cubre persistencia y migraciones, modelo, acción y ruta, renderizado y JavaScript o CSS solo cuando el caso los requiera. Respeta los patrones observados en el repositorio. Las validaciones habituales son comprobar formato con `gofmt -l .`, ejecutar `go vet ./...`, `go test -p 1 ./...` y `go build ./...`; los tests de aplicación necesitan PostgreSQL y las migraciones de test preparadas. Incluye únicamente las comprobaciones pertinentes a la funcionalidad.
+Cubre persistencia y migraciones, modelo, acción y ruta, renderizado y JavaScript o CSS solo cuando el caso los requiera. Respeta los patrones observados en el repositorio. Las validaciones habituales son comprobar formato con `gofmt -l .`, ejecutar `go vet ./...`, `GO_ENV=test go test -p 1 ./...` y `go build ./...`; los tests de aplicación necesitan PostgreSQL, las migraciones de test preparadas y `GO_ENV=test`, sin el cual la protección CSRF está activa y los tests de acciones fallan con 403. Incluye únicamente las comprobaciones pertinentes a la funcionalidad.
 
 Al terminar, informa solo de la ruta del plan, sus decisiones principales y las incertidumbres pendientes. Sugiere `/implement <ruta>` como siguiente paso.

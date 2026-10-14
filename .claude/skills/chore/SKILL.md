@@ -29,6 +29,6 @@ El plan debe incluir:
 
 Deriva de `$ARGUMENTS` y de la evidencia del repositorio los archivos concretos, los puntos de ruptura u otros límites de comportamiento relevantes y las validaciones aplicables. El plan debe preservar el comportamiento observable que no forme parte explícita del encargo y explicar cómo comprobarlo antes y después del cambio.
 
-Detalla comandos reproducibles y el orden de los cambios. Usa solo validaciones disponibles y pertinentes, como `gofmt -l .`, `go vet ./...`, `go test -p 1 ./...`, `go build ./...` o `docker build -t todo .`. No añadas una herramienta ni una dependencia salvo que el encargo lo requiera explícitamente y el plan justifique el coste.
+Detalla comandos reproducibles y el orden de los cambios. Usa solo validaciones disponibles y pertinentes, como `gofmt -l .`, `go vet ./...`, `GO_ENV=test go test -p 1 ./...`, `go build ./...` o `docker build -t todo .`. No añadas una herramienta ni una dependencia salvo que el encargo lo requiera explícitamente y el plan justifique el coste.
 
 Al terminar, informa solo de la ruta del plan, sus decisiones principales y las incertidumbres pendientes. Sugiere `/implement <ruta>` como siguiente paso.
